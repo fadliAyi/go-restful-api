@@ -1,0 +1,51 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+      "title":"Golang RESTful api",
+      "version":"1.0"
+    },
+    "servers": [
+      {"url":"http://localhost:3000"}
+    ],
+    "paths": {
+      "/categories" : {
+        "get": {
+          "description": "List of categories",
+          "responses": {
+            "200" : {
+              "description": "Success get all categories",
+              "content": {
+                "aplication/json" : {
+                  "schema" :{
+                    "type": "object",
+                    "properties": {
+                      "code" :{
+                        "type": "number"
+                      },
+                      "status":{
+                        "type": "string"
+                      },
+                      "data":{
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "number"
+                            },
+                            "name": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
