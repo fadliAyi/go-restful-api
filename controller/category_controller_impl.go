@@ -15,6 +15,13 @@ type CategoryControllerImpl struct {
 	CategoryService service.CategoryService
 }
 
+// like constructor in OOP paragdima
+func NewCategoryController(categoryService service.CategoryService) CategoryController {
+	return &CategoryControllerImpl{
+		CategoryService: categoryService,
+	}
+}
+
 func (contoller *CategoryControllerImpl) Create(writer http.ResponseWriter, request *http.Request, params httprouter.Params) {
 	// TODO: create helper function to read from request body. looping code
 	decoder := json.NewDecoder(request.Body)

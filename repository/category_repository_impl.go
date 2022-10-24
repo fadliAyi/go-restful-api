@@ -11,6 +11,11 @@ import (
 type CategoryRepositoryImpl struct {
 }
 
+// like constructor in OOP paragdima
+func NewCategoryReposotry() CategoryRepository {
+	return &CategoryRepositoryImpl{}
+}
+
 func (repository *CategoryRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, category domain.Category) domain.Category {
 	Sql := "INSERT INTO category(name) values (?)"
 	result, err := tx.ExecContext(ctx, Sql, category.Name)
@@ -42,7 +47,7 @@ func (repository *CategoryRepositoryImpl) Delete(ctx context.Context, tx *sql.Tx
 	helper.PanicIfError(err)
 }
 
-func (repository *CategoryRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, categoryId int64) (domain.Category, error) {
+func (repository *CategoryRepositoryImpl) FindById(ctx context.Context, tx *sql.Tx, categoryId int) (domain.Category, error) {
 	Sql := "SELECT id, name FROM category where id = ?"
 	rows, err := tx.QueryContext(ctx, Sql, categoryId)
 	helper.PanicIfError(err)
@@ -56,7 +61,7 @@ func (repository *CategoryRepositoryImpl) FindById(ctx context.Context, tx *sql.
 	}
 }
 
-func (repository *CategoryRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx, category domain.Category) []domain.Category {
+func (repository *CategoryRepositoryImpl) FindAll(ctx context.Context, tx *sql.Tx) []domain.Category {
 	Sql := "SELECT id, name FROM category"
 	rows, err := tx.QueryContext(ctx, Sql)
 	helper.PanicIfError(err)
