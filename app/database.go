@@ -6,7 +6,7 @@ import (
 )
 
 func NewDB() *sql.DB {
-	db, err := sql.Open("mysql", "root:langsungenter@tcp(localhost:3306)/go_database?parseTime=true")
+	db, err := sql.Open("mysql", "root:langsungenter@tcp(localhost:3306)/go_restful_api?parseTime=true")
 	if err != nil {
 		panic(err)
 	}
