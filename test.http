@@ -7,7 +7,7 @@ POST http://localhost:3000/api/categories HTTP/1.1
 Content-Type: application/json
 
 {
-  "name": "Celana"
+  "name": ""
 }
 
 ### Update category
@@ -19,7 +19,7 @@ Content-Type: application/json
 }
 
 ### Get Category By Id
-GET http://localhost:3000/api/categories/1 HTTP/1.1
+GET http://localhost:3000/api/categories/100 HTTP/1.1
 Accept: application/json
 
 ### Delete Category
